@@ -19,7 +19,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 $(NAME) :
 	@make fclean -C libft/ && make -C libft/
 	@cp libft/libft.a .
-	@gcc -c -Wall -Werror -Wextra $(SRC_NAME)
+	@gcc -c $(SRC_NAME)
 	@gcc $(OBJ_NAME) -o $(NAME) -L. -lft
 	@echo "\033[1;34m --push_swap-- :\033[m \033[1;32m DONE !\033[m"
 
