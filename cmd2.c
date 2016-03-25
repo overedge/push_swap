@@ -6,13 +6,13 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 21:51:43 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/25 12:14:57 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/25 17:14:13 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		cmd_ra_rb(int *tab, t_env *e, int size)
+void		cmd_ra(int *a, t_env *e)
 {
 	int		i;
 	int		tmp;
@@ -21,37 +21,87 @@ void		cmd_ra_rb(int *tab, t_env *e, int size)
 
 	i = 1;
 	swith = 0;
-	if (size > 2)
+	if (e->size_a > 2)
 	{
-		tmp = tab[0];
-		tab[0] = tab[size - 1];
-		while (i < size)
+		add_back(&e->begin_list, "ra");
+		tmp = a[0];
+		a[0] = a[e->size_a - 1];
+		while (i < e->size_a)
 		{
-			swith == 0 ? (tmp2 = tab[i]) : (tmp = tab[i]);
-			swith == 0 ? (tab[i] = tmp) : (tab[i] = tmp2);
+			swith == 0 ? (tmp2 = a[i]) : (tmp = a[i]);
+			swith == 0 ? (a[i] = tmp) : (a[i] = tmp2);
 			swith == 0 ? (swith = 1) : (swith = 0);
 			i++;
 		}
 	}
 }
 
-void		cmd_rra_rrb(int *tab, t_env *e, int size)
+void		cmd_rb(int *b, t_env *e)
 {
 	int		i;
 	int		tmp;
 	int		tmp2;
 	int		swith;
 
-	i = size - 2;
+	i = 1;
 	swith = 0;
-	if (size > 2)
+	if (e->size_b > 2)
 	{
-		tmp = tab[size - 1];
-		tab[size - 1] = tab[0];
+		add_back(&e->begin_list, "rb");
+		tmp = b[0];
+		b[0] = b[e->size_b - 1];
+		while (i < e->size_b)
+		{
+			swith == 0 ? (tmp2 = b[i]) : (tmp = b[i]);
+			swith == 0 ? (b[i] = tmp) : (b[i] = tmp2);
+			swith == 0 ? (swith = 1) : (swith = 0);
+			i++;
+		}
+	}
+}
+
+void		cmd_rra(int *a, t_env *e)
+{
+	int		i;
+	int		tmp;
+	int		tmp2;
+	int		swith;
+
+	i = e->size_a - 2;
+	swith = 0;
+	if (e->size_a > 2)
+	{
+		add_back(&e->begin_list, "rra");
+		tmp = a[e->size_a - 1];
+		a[e->size_a - 1] = a[0];
 		while (i >= 0)
 		{
-			swith == 0 ? (tmp2 = tab[i]) : (tmp = tab[i]);
-			swith == 0 ? (tab[i] = tmp) : (tab[i] = tmp2);
+			swith == 0 ? (tmp2 = a[i]) : (tmp = a[i]);
+			swith == 0 ? (a[i] = tmp) : (a[i] = tmp2);
+			swith == 0 ? (swith = 1) : (swith = 0);
+			i--;
+		}
+	}
+}
+
+void		cmd_rrb(int *b, t_env *e)
+{
+	int		i;
+	int		tmp;
+	int		tmp2;
+	int		swith;
+
+	i = e->size_b - 2;
+	swith = 0;
+	if (e->size_b > 2)
+	{
+		add_back(&e->begin_list, "rrb");
+		tmp = b[e->size_b - 1];
+		b[e->size_b - 1] = b[0];
+		while (i >= 0)
+		{
+			swith == 0 ? (tmp2 = b[i]) : (tmp = b[i]);
+			swith == 0 ? (b[i] = tmp) : (b[i] = tmp2);
 			swith == 0 ? (swith = 1) : (swith = 0);
 			i--;
 		}

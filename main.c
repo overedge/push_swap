@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:02:20 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/25 12:19:18 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/25 19:30:23 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,45 @@ static void	check_error(int argc, char **argv)
 	}
 }
 
+void	debug(t_env *e)
+{
+	if (e->f_v == 1)
+		ft_printf("Verbose mode enable\n");
+	if (e->f_c == 1)
+		ft_printf("Color mode enable\n");
+	if (e->f_s == 1)
+		ft_printf("score mode enable\n");
+}
+
+void	check_flags(t_env *e)
+{
+	int		i;
+
+	i = 1;
+	while (i <= 3)
+	{
+		if (ft_strcmp("-v", e->av[i]) == 0 && e->f_v == 0)
+		{
+			e->f_v = 1;
+		//	e->ac--;
+		}
+		else if (ft_strcmp("-c", e->av[i]) == 0 && e->f_c == 0)
+		{
+			e->f_c = 1;
+		//	e->ac--;
+			//e->av++;
+		}
+		else if (ft_strcmp("-s", e->av[i]) == 0 && e->f_s == 0)
+		{
+			e->f_s = 1;
+		//	e->ac--;
+			//e->av++;
+		}
+		e->av++;
+		i++;
+	}
+}
+
 int			main(int argc, char **argv)
 {
 	int		*tab_a;
@@ -44,11 +83,18 @@ int			main(int argc, char **argv)
 	t_env	e;
 
 	ft_memset(&e, 0, sizeof(t_env));
-	e.size_a = argc - 1;
 	e.size_b = 0;
-	check_error(argc, argv);
-	tab_a = args_to_tab(tab_a, argc, argv, &e);
-	tab_b = args_to_tab(tab_a, argc, NULL, &e);
+	e.begin_list = NULL;
+	e.ac = argc;
+	e.av = argv;
+	check_flags(&e);
+	e.size_a = e.ac - 1;
+	debug(&e);
+	check_error(e.ac, e.av);
+	tab_a = args_to_tab(tab_a, e.ac, e.av, &e);
+	tab_b = args_to_tab(tab_a, e.ac, NULL, &e);
 	algo(tab_a, tab_b, &e);
+	print(&e);
+	print_tab_a(tab_a, &e);
 	return (0);
 }

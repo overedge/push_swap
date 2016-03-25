@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 14:45:33 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/24 17:23:19 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/25 17:40:15 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ void	error()
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
+}
+
+void		add_back(t_list **begin_list, char *str)
+{
+	t_list *tmp;
+
+	tmp = *begin_list;
+	if (*begin_list == NULL)
+		*begin_list = ft_lstnew(str, ft_strlen(str) + 1);
+	else
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = ft_lstnew(str, ft_strlen(str) + 1);
+	}
 }
