@@ -1,26 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/23 18:02:20 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/24 15:46:04 by nahmed-m         ###   ########.fr       */
+/*   Created: 2016/03/25 01:50:32 by nahmed-m          #+#    #+#             */
+/*   Updated: 2016/03/25 01:50:40 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		main(int argc, char **argv)
-{
-	int		*tab_a;
-	int		*tab_b;
-	t_env	e;
-
-	ft_memset(&e, 0, sizeof(t_env));
-	tab_a = args_to_tab(tab_a, argc, argv, &e);
-	print_tab(tab_a);
-	//tab_b = args_to_tab(tab_a, argc, NULL, &e);
-	return (0);
-}

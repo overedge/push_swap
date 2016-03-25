@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 16:15:54 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/24 17:23:06 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/25 01:18:54 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ typedef struct		s_env
 /*
 **	CMDS 
 */
-void					cmd_sa_sb(int **tab);
-void					cmd_ss(int **tab_a, int **tab_b);
-void					cmd_pa_pb(int **src, int **dest);
-void					cmd_ra_rb();
+void					cmd_sa(int *a, t_env *e);
+void					cmd_sb(int *b, t_env *e);
+void					cmd_pa(int *a, int *b, t_env *e);
+void					cmd_pb(int *a, int *b, t_env *e);
+void					cmd_ra(int *a, t_env *e);
+void					cmd_rb(int *b, t_env *e);
+void					cmd_rra(int *a, t_env *e);
+void					cmd_rrb(int *b, t_env *e);
 
 /*
 ** UTILS

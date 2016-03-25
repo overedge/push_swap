@@ -6,11 +6,11 @@
 #    By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/03 19:34:07 by nahmed-m          #+#    #+#              #
-#*   Updated: 2016/03/20 15:47:08 by nahmed-m         ###   ########.fr       *#
+#*   Updated: 2016/03/25 01:50:28 by nahmed-m         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c utils.c cmd.c
+SRC_NAME = main.c utils.c cmd.c cmd2.c algo.c print.c
 
 NAME = push_swap
 
