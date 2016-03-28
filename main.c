@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:02:20 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/26 02:04:30 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/28 22:57:35 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_flags(t_env *e)
 	int		i;
 
 	i = 1;
-	while (i <= 3)
+	while (i <= e->ac - 1)
 	{
 		if (ft_strcmp("-v", e->av[i]) == 0 && e->f_v == 0)
 			e->f_v = 1;
@@ -68,6 +68,8 @@ void	check_flags(t_env *e)
 			e->f_c = 1;
 		else if (ft_strcmp("-s", e->av[i]) == 0 && e->f_s == 0)
 			e->f_s = 1;
+		else
+			break ;
 		i++;
 	}
 	e->f_v == 1 ? *e->av = *e->av++ : 0;
@@ -76,6 +78,8 @@ void	check_flags(t_env *e)
 	e->f_v == 1 ? e->ac-- : 0;
 	e->f_c == 1 ? e->ac-- : 0;
 	e->f_s == 1 ? e->ac-- : 0;
+	if (e->ac == 1 && e->f_s == 1 && e->f_c == 1 && e->f_v == 1)
+		exit(EXIT_SUCCESS);
 }
 
 int			main(int argc, char **argv)
@@ -91,7 +95,7 @@ int			main(int argc, char **argv)
 	e.av = argv;
 	check_flags(&e);
 	e.size_a = e.ac - 1;
-//	debug(&e);
+	//debug(&e);
 	check_error(e.ac, e.av);
 	tab_a = args_to_tab(tab_a, e.ac, e.av, &e);
 	tab_b = args_to_tab(tab_a, e.ac, NULL, &e);
