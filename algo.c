@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 01:50:32 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/28 23:16:39 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/29 20:49:19 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		send_b(int *a, int *b, t_env *e)
 	int		i;
 
 	i = e->size_b - 1;
-	while (i > 0)
+	while (e->size_b  != 0)
 	{
 		cmd_pa(a, b, e);
 		i = e->size_b - 1;
@@ -43,15 +43,25 @@ void		send_b(int *a, int *b, t_env *e)
 int					get_minus(int *a, t_env *e)
 {
 	int		i;
+	int		j;
 	int		pos;
 
-	i = e->size_a - 1;
-	while (i > 0)
+	i = 0;
+	while (i <= e->size_a - 1)
 	{
-		if (a[i] < a[i - 1])
-		i--;
+		pos = 0;
+		j = 0;
+		while (j <= e->size_a - 1)
+		{
+			if (a[i] < a[j] || j == i)
+				pos++;
+			j++;
+		}
+		if (pos == e->size_a)
+			return (i);
+		i++;
 	}
-	return (pos);
+	return (-1);
 }
 
 void				sort(int *a, int *b, t_env *e)
@@ -61,9 +71,31 @@ void				sort(int *a, int *b, t_env *e)
 
 	while (is_sorted(a, e) != e->size_a - 1)
 	{
-		
+		pos = get_minus(a, e);
+		if (pos == -1)
+			ft_printf("BUG DE OUF DE OUF \n");
+		if (e->size_a == 2 && a[e->size_a - 1] > a[e->size_a - 2])
+			cmd_sa(a, e);
+		else if (pos < e->size_a / 2)
+		{
+			while (pos > 0)
+			{
+				cmd_ra(a, e);
+				pos--;
+			}
+			cmd_pb(a, b, e);
+		}
+		else
+		{
+			while (pos > 0)
+			{
+				cmd_rra(a, e);
+				pos--;
+			}
+			cmd_pb(a, b, e);
+		}
 	}
-	if (e->size_b < 0)
+	if (e->size_b > 0)
 		send_b(a, b, e);
 }
 

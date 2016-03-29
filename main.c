@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 18:02:20 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/28 22:57:35 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/29 15:49:10 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int			main(int argc, char **argv)
 	ft_memset(&e, 0, sizeof(t_env));
 	e.size_b = 0;
 	e.begin_list = NULL;
+	if (argc == 1)
+		exit(EXIT_SUCCESS);
 	e.ac = argc;
 	e.av = argv;
 	check_flags(&e);
