@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 14:45:33 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/25 17:40:15 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/30 19:58:35 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,6 @@ int		*args_to_tab(int *tab, int ac, char **av, t_env *e)
 		return (tab);
 	}
 	return (tab);
-}
-
-void	print_tab_a(int *tab, t_env *e)
-{
-	int		i;
-
-	i = 0;
-	while (i < e->size_a)
-	{
-		ft_printf("%d ", tab[i]);
-		i++;
-	}
-}
-
-void	print_tab_b(int *tab, t_env *e)
-{
-	int		i;
-
-	i = 0;
-	while (i < e->size_b)
-	{
-		ft_printf("%d ", tab[i]);
-		i++;
-	}
 }
 
 void	error()

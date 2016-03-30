@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 01:50:32 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/29 20:49:19 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/30 20:07:36 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,23 @@ int					get_minus(int *a, t_env *e)
 {
 	int		i;
 	int		j;
-	int		pos;
+	int		min;
 
 	i = 0;
-	while (i <= e->size_a - 1)
+	j = 0;
+	min = a[0];
+	while (i < e->size_a)
 	{
-		pos = 0;
-		j = 0;
-		while (j <= e->size_a - 1)
+		if (a[i] < min)
 		{
-			if (a[i] < a[j] || j == i)
-				pos++;
-			j++;
+			min = a[i];
+			j = i;
 		}
-		if (pos == e->size_a)
-			return (i);
 		i++;
 	}
-	return (-1);
+	//ft_printf("La position de lidex et %d\n et size_a : %d\n", j, e->size_a);
+//	exit(0);
+	return (j);
 }
 
 void				sort(int *a, int *b, t_env *e)
@@ -72,25 +71,23 @@ void				sort(int *a, int *b, t_env *e)
 	while (is_sorted(a, e) != e->size_a - 1)
 	{
 		pos = get_minus(a, e);
-		if (pos == -1)
-			ft_printf("BUG DE OUF DE OUF \n");
 		if (e->size_a == 2 && a[e->size_a - 1] > a[e->size_a - 2])
-			cmd_sa(a, e);
+			cmd_sa(a, b, e);
 		else if (pos < e->size_a / 2)
 		{
-			while (pos > 0)
+			while (pos != e->size_a - 1)
 			{
-				cmd_ra(a, e);
-				pos--;
+				cmd_rra(a, b, e);
+				pos = get_minus(a, e);
 			}
 			cmd_pb(a, b, e);
 		}
 		else
 		{
-			while (pos > 0)
+			while (pos != e->size_a - 1)
 			{
-				cmd_rra(a, e);
-				pos--;
+				cmd_ra(a, b, e);
+				pos = get_minus(a, e);
 			}
 			cmd_pb(a, b, e);
 		}

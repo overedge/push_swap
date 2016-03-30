@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 16:15:54 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/25 17:39:21 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/30 20:53:32 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,34 @@ typedef struct		s_env
 	char			f_v;
 	char			f_c;
 	char			f_s;
+	char			f_t;
+	char			f_l;
 	int				ac;
 	char			**av;
 }					t_env;
 
+typedef struct		s_score
+{
+	int				sa;
+	int				pa;
+	int				pb;
+	int				rra;
+	int				ra;
+}					t_score;
+
 /*
 **	CMDS 
 */
-void					cmd_sa(int *a, t_env *e);
-void					cmd_sb(int *b, t_env *e);
+void					cmd_sa(int *a, int *b, t_env *e);
 void					cmd_pa(int *a, int *b, t_env *e);
 void					cmd_pb(int *a, int *b, t_env *e);
-void					cmd_ra(int *a, t_env *e);
-void					cmd_rb(int *b, t_env *e);
-void					cmd_rra(int *a, t_env *e);
-void					cmd_rrb(int *b, t_env *e);
+void					cmd_ra(int *a, int *b, t_env *e);
+void					cmd_rra(int *a, int *b, t_env *e);
 
 /*
 ** UTILS
 */
 int						*args_to_tab(int *tab, int ac, char **av, t_env *e);
-void					print_tab_a(int *tab, t_env *e);
-void					print_tab_b(int *tab, t_env *e);
 void					error();
 void					add_back(t_list **begin_list, char *str);
 
@@ -57,5 +63,8 @@ void					algo(int *a, int *b, t_env *e);
 /*
 ** PRINT
 */
+void					print_score(t_list *begin_list, t_env *e);
+void					print_color(t_list *begin_list, t_env *e);
+void					print_tab(int *a, int *b, t_env *e, char *cmd);
 void					print(t_env *e);
 #endif
