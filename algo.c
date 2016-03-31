@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 01:50:32 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/30 20:07:36 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/31 20:25:37 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int					is_sorted(int *a, t_env *e)
 	return (j);
 }
 
-void		send_b(int *a, int *b, t_env *e)
+void				send_b(int *a, int *b, t_env *e)
 {
 	int		i;
 
 	i = e->size_b - 1;
-	while (e->size_b  != 0)
+	while (e->size_b != 0)
 	{
 		cmd_pa(a, b, e);
 		i = e->size_b - 1;
@@ -58,8 +58,6 @@ int					get_minus(int *a, t_env *e)
 		}
 		i++;
 	}
-	//ft_printf("La position de lidex et %d\n et size_a : %d\n", j, e->size_a);
-//	exit(0);
 	return (j);
 }
 
@@ -96,7 +94,6 @@ void				sort(int *a, int *b, t_env *e)
 		send_b(a, b, e);
 }
 
-
 void				algo(int *a, int *b, t_env *e)
 {
 	int		i;
@@ -106,4 +103,6 @@ void				algo(int *a, int *b, t_env *e)
 		exit(EXIT_SUCCESS);
 	else
 		sort(a, b, e);
+	if (e->f_c == 0 && e->f_s == 0 && e->f_t == 0)
+		ft_putchar('\n');
 }

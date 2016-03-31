@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 16:15:54 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/30 20:53:32 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/31 20:06:22 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,31 @@ typedef struct		s_score
 }					t_score;
 
 /*
-**	CMDS 
+**	CMDS
 */
-void					cmd_sa(int *a, int *b, t_env *e);
-void					cmd_pa(int *a, int *b, t_env *e);
-void					cmd_pb(int *a, int *b, t_env *e);
-void					cmd_ra(int *a, int *b, t_env *e);
-void					cmd_rra(int *a, int *b, t_env *e);
+void				cmd_sa(int *a, int *b, t_env *e);
+void				cmd_pa(int *a, int *b, t_env *e);
+void				cmd_pb(int *a, int *b, t_env *e);
+void				cmd_ra(int *a, int *b, t_env *e);
+void				cmd_rra(int *a, int *b, t_env *e);
 
 /*
 ** UTILS
 */
-int						*args_to_tab(int *tab, int ac, char **av, t_env *e);
-void					error();
-void					add_back(t_list **begin_list, char *str);
+int					*args_to_tab(int *tab, int ac, char **av, t_env *e);
+void				error();
+void				add_back(t_list **begin_list, char *str);
 
 /*
 ** ALGO
 */
-void					algo(int *a, int *b, t_env *e);
+void				algo(int *a, int *b, t_env *e);
 
 /*
 ** PRINT
 */
-void					print_score(t_list *begin_list, t_env *e);
-void					print_color(t_list *begin_list, t_env *e);
-void					print_tab(int *a, int *b, t_env *e, char *cmd);
-void					print(t_env *e);
+void				print_score(t_list *begin_list, t_env *e);
+void				print_color(t_list *begin_list, t_env *e);
+void				print_tab(int *a, int *b, t_env *e, char *cmd);
+void				print(t_env *e);
 #endif

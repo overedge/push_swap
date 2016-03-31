@@ -6,7 +6,7 @@
 /*   By: nahmed-m <nahmed-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 01:50:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/03/30 20:53:33 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/03/31 16:35:15 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ void				print_tab(int *a, int *b, t_env *e, char *cmd)
 	int		i;
 
 	i = 0;
-	ft_printf("\033[1;34mCMD :\033[m \033[1;32m%s\033[m\n", cmd);
+	if (cmd)
+		ft_printf("\033[1;34mCMD :\033[m \033[1;32m%s\033[m\n", cmd);
+	else if (!cmd && b)
+		ft_printf("\033[1;35mFIRST STATE OF PILE\033[m\n", cmd);
+	else
+		ft_printf("\033[1;35mLAST STATE OF PILE\033[m\n", cmd);
 	ft_printf("\033[1;34mPILE A :\033[m ");
 	while (i < e->size_a)
-			ft_printf("\033[1;32m%d\033[m ", a[i++]);
+		ft_printf("\033[1;32m%d\033[m ", a[i++]);
 	ft_putchar('\n');
 	if (e->size_b > 0)
 	{
@@ -53,11 +58,11 @@ void				print_score(t_list *begin_list, t_env *e)
 		begin_list = begin_list->next;
 	}
 	if (e->f_s == 1)
-		ft_printf("\n\033[1;34mSCORE :\033[m\n\033[1;32msa : %d\npa : %d\npb :\
- %d\nrra : %d\nra : %d\n\033[m", s.sa, s.pa, s.pb, s.rra, s.ra);
+		ft_printf("\n\033[1;34mSCORE :\033[m\n\033[1;32msa : %d\npa : %d\n\
+pb : %d\nrra : %d\nra : %d\n\033[m", s.sa, s.pa, s.pb, s.rra, s.ra);
 	if (e->f_t == 1)
 		ft_printf("\n\033[1;34mTOTAL : \033[m\033[1;32m%d\n\033[m",\
-s.sa + s.pa + s.pb + s.rra + s.ra );
+s.sa + s.pa + s.pb + s.rra + s.ra);
 }
 
 void				print_color(t_list *begin_list, t_env *e)

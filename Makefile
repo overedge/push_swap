@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME = main.c utils.c cmd.c cmd2.c algo.c print.c
+SRC_NAME = main.c utils.c cmd.c algo.c print.c
 
 NAME = push_swap
 
